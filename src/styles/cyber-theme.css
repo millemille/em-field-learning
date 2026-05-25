@@ -1,0 +1,122 @@
+:root {
+  --background: #080a0f;
+  --background-end: #12151c;
+  --foreground: #e8ecf4;
+  --muted: #8b95a8;
+  --surface: rgba(20, 24, 32, 0.72);
+  --border: rgba(184, 192, 208, 0.18);
+  --border-glow: rgba(79, 209, 255, 0.35);
+  --accent: #4fd1ff;
+  --accent-dim: rgba(79, 209, 255, 0.12);
+  --accent-glow: rgba(79, 209, 255, 0.25);
+  --silver: #b8c0d0;
+  --positive: #5dffb0;
+  --negative: #ff6b8a;
+  --font-display: 'Orbitron', system-ui, sans-serif;
+  --font-body: 'Rajdhani', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse 120% 80% at 50% -20%, #1a2030 0%, var(--background) 45%, #050608 100%);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.cyber-glass {
+  background: linear-gradient(145deg, var(--surface), rgba(8, 10, 15, 0.55));
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4) inset,
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 0 40px var(--accent-glow);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+}
+
+.canvas-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-glow);
+  background: #06080c;
+  min-height: 420px;
+}
+
+.canvas-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(79, 209, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 209, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+}
+
+.canvas-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  opacity: 0.35;
+}
+
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.015) 3px,
+    rgba(255, 255, 255, 0.015) 4px
+  );
+  opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanline-overlay {
+    display: none;
+  }
+}
+
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}

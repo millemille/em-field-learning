@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@import './styles/cyber-theme.css';
+
+@theme inline {
+  --color-background: #080a0f;
+  --color-foreground: #e8ecf4;
+  --color-muted: #8b95a8;
+  --color-accent: #4fd1ff;
+}
