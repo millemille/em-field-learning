@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { FieldLabScene } from '@/components/lab/FieldLabScene'
 import { CircuitLabScene } from '@/components/lab/CircuitLabScene'
+import { SolarSystemScene } from '@/components/lab/SolarSystemScene'
 import { useLabStore } from '@/hooks/useLabStore'
 
 class WebGLErrorBoundary extends Component<
@@ -23,7 +24,17 @@ class WebGLErrorBoundary extends Component<
 
 function SceneContent() {
   const activeTab = useLabStore((s) => s.activeTab)
-  return activeTab === 'field' ? <FieldLabScene /> : <CircuitLabScene />
+  if (activeTab === 'field') return <FieldLabScene />
+  if (activeTab === 'circuit') return <CircuitLabScene />
+  return <SolarSystemScene />
+}
+
+function SceneFog() {
+  const activeTab = useLabStore((s) => s.activeTab)
+  if (activeTab === 'solar') {
+    return <fog attach="fog" args={['#06080c', 35, 130]} />
+  }
+  return <fog attach="fog" args={['#06080c', 18, 55]} />
 }
 
 function PostFX() {
@@ -58,8 +69,8 @@ export function LabCanvas() {
         gl={{ antialias: true, alpha: false }}
       >
         <color attach="background" args={['#06080c']} />
-        <fog attach="fog" args={['#06080c', 18, 55]} />
         <Suspense fallback={null}>
+          <SceneFog />
           <SceneContent />
           <PostFX />
         </Suspense>

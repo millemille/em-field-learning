@@ -60,6 +60,14 @@ body {
     height: clamp(360px, calc(100dvh - 11.5rem), 520px);
   }
 
+  .lab-workspace--solar {
+    height: clamp(480px, calc(100dvh - 8.5rem), 680px);
+  }
+
+  .lab-controls-scroll--solar {
+    overflow-y: visible;
+  }
+
   .lab-controls-scroll {
     scrollbar-width: thin;
     scrollbar-color: var(--border-glow) transparent;

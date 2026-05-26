@@ -26,7 +26,8 @@ export function HeroIntro() {
           intermediate learners</strong>. Each lab links a concept to something you can see: field
           arrows for <span className="font-mono text-[var(--accent)]">E</span>, a force arrow for{' '}
           <span className="font-mono text-[var(--accent)]">F = qE</span>, and glowing components
-          for power <span className="font-mono text-[var(--accent)]">P = IV</span> in a DC circuit. /
+          for power <span className="font-mono text-[var(--accent)]">P = IV</span> in a DC circuit.
+          <br />
           這個頁面是為了<strong className="text-[var(--foreground)]">初學與進階學習者</strong>
           設計。每個實驗都把概念連到可視化現象：
           <span className="font-mono text-[var(--accent)]">E</span> 用場箭頭表示、
@@ -72,6 +73,15 @@ export function HeroIntro() {
           <strong className="text-[var(--foreground)]">功率</strong> 是每秒能量（瓦特）。在電路實驗裡，
           <span className="font-mono text-[var(--accent)]">P = V × I</span>。這些能量常會變成電阻的熱，
           可看到發光強度隨 P 增加。
+        </HelpNote>
+        <HelpNote title={'Orbits & gravity\n軌道與重力'} className="sm:col-span-2">
+          In the Solar System lab, each planet&apos;s year length follows{' '}
+          <span className="font-mono text-[var(--accent)]">T² ∝ a³</span> (Kepler). The Moon orbits
+          Earth while both fall around the Sun — all on automatic, interactive 3D paths you can
+          rotate and zoom. <br />
+          在太陽系實驗中，各行星的年長度遵循
+          <span className="font-mono text-[var(--accent)]">T² ∝ a³</span>（開普勒）。月球繞地球，
+          兩者又一起繞太陽 — 全部自動運行，並可拖曳旋轉、滾輪縮放的 3D 軌道。
         </HelpNote>
       </div>
 

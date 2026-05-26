@@ -70,6 +70,53 @@ export function LabGuide({ className }: LabGuideProps) {
     </>
   )
 
+  const solarContent = (
+    <>
+      <HelpNote title={'What this lab shows\n這個實驗在展示什麼'}>
+        A scaled model of the <strong className="text-[var(--foreground)]">Solar System</strong>:
+        the Sun, eight planets, Earth&apos;s Moon, and the{' '}
+        <strong className="text-[var(--foreground)]">asteroid belt</strong> between Mars and Jupiter.
+        Bodies orbit in the ecliptic plane; each uses its real{' '}
+        <strong className="text-[var(--foreground)]">sidereal orbital period</strong> (Kepler:
+        longer orbits for larger mean distances). Planets also{' '}
+        <strong className="text-[var(--foreground)]">spin</strong> at rates based on real rotation
+        periods. Only the <strong className="text-[var(--foreground)]">Sun</strong> lights the scene:
+        the day side faces the Sun with specular glare; the night side stays dark. Planet sizes match
+        real proportions (Earth = reference); only the Sun is drawn smaller than true scale so inner
+        orbits stay visible. Distances use AU on a compressed scale.
+        The Moon&apos;s path around Earth is drawn larger than true scale (but kept outside
+        Venus&apos;s orbit). Use <strong>Full system / None</strong> for free pan and zoom.{' '}
+        <br />
+        這是
+        <strong className="text-[var(--foreground)]">太陽系</strong>的縮放模型：太陽、八大行星、地球
+        <strong className="text-[var(--foreground)]">月球</strong>，以及火星與木星之間的
+        <strong className="text-[var(--foreground)]">小行星帶</strong>。天體沿黃道面公轉，週期採真實
+        <strong className="text-[var(--foreground)]">恆星週期</strong>（開普勒定律：距離越遠週期越長），並依真實自轉週期
+        <strong className="text-[var(--foreground)]">自轉</strong>。僅
+        <strong className="text-[var(--foreground)]">太陽</strong>照亮場景：向陽面有高光，背陽面保持黑暗。行星大小為真實比例（以地球為基準），僅太陽縮小以便看見內側軌道；月球繞地路徑有放大但不進入金星軌道內側。距離以 AU 壓縮。選
+        <strong>全覽 / 無</strong> 可自由平移與縮放。
+      </HelpNote>
+      <HelpNote title={'Try this\n試試看'} variant="tip">
+        Toggle <strong>orbit trajectories</strong> to see paths, then speed up time. Use{' '}
+        <strong>Earth–Moon</strong> to watch the Moon circle Earth while both orbit the Sun. Compare{' '}
+        <strong>Inner</strong> vs <strong>Outer</strong> presets — Jupiter and Neptune move much
+        slower in real time. <br />
+        切換<strong>軌道軌跡</strong>顯示路徑，再提高時間倍率。用
+        <strong>Earth–Moon</strong> 觀察月球繞地球公轉。比較
+        <strong>Inner</strong> 與 <strong>Outer</strong> 預設 — 木星與海王星在真實比例下動得慢得多。
+      </HelpNote>
+      <HelpNote variant="formula">
+        Kepler&apos;s third law: T² ∝ a³ &nbsp;·&nbsp; Moon orbits Earth, Earth orbits Sun <br />
+        開普勒第三定律：T² ∝ a³
+        &nbsp;·&nbsp; 月球繞地球，地球繞太陽
+      </HelpNote>
+      <p className="text-xs text-[var(--muted)]">
+        Drag to orbit the view · scroll to zoom · checkbox shows/hides trajectory rings <br />
+        拖曳旋轉視角 · 滾輪縮放 · 勾選框可顯示/隱藏軌道環
+      </p>
+    </>
+  )
+
   return (
     <details
       className={cn(
@@ -86,7 +133,11 @@ export function LabGuide({ className }: LabGuideProps) {
         </span>
       </summary>
       <div className="mt-3 space-y-3 border-t border-[var(--border)] pt-3">
-        {activeTab === 'field' ? fieldContent : circuitContent}
+        {activeTab === 'field'
+          ? fieldContent
+          : activeTab === 'circuit'
+            ? circuitContent
+            : solarContent}
       </div>
     </details>
   )

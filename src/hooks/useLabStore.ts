@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { PointCharge } from '@/lib/physics/coulomb'
 
-export type LabTab = 'field' | 'circuit'
+export type LabTab = 'field' | 'circuit' | 'solar'
 
 export interface FieldMetrics {
   fieldMagnitude: number
@@ -37,6 +37,14 @@ interface LabStore {
   setVoltage: (v: number) => void
   setResistance: (r: number) => void
   applyCircuitPreset: (preset: 'led' | 'heater' | 'open') => void
+
+  solarTimeScale: number
+  solarShowOrbits: boolean
+  solarFocusId: string | null
+  setSolarTimeScale: (v: number) => void
+  setSolarShowOrbits: (v: boolean) => void
+  setSolarFocusId: (id: string | null) => void
+  applySolarPreset: (preset: 'overview' | 'inner' | 'outer' | 'earth') => void
 }
 
 export const useLabStore = create<LabStore>((set) => ({
@@ -101,5 +109,24 @@ export const useLabStore = create<LabStore>((set) => ({
     if (preset === 'led') set({ voltage: 3.3, resistance: 150 })
     else if (preset === 'heater') set({ voltage: 120, resistance: 14 })
     else set({ voltage: 9, resistance: 10000 })
+  },
+
+  solarTimeScale: 1,
+  solarShowOrbits: true,
+  solarFocusId: 'sun',
+  setSolarTimeScale: (v) => set({ solarTimeScale: v }),
+  setSolarShowOrbits: (v) => set({ solarShowOrbits: v }),
+  setSolarFocusId: (id) =>
+    set({ solarFocusId: id === 'moon' ? 'earth' : id }),
+  applySolarPreset: (preset) => {
+    if (preset === 'overview') {
+      set({ solarTimeScale: 0.8, solarShowOrbits: true, solarFocusId: null })
+    } else if (preset === 'inner') {
+      set({ solarTimeScale: 2.5, solarFocusId: 'mars' })
+    } else if (preset === 'outer') {
+      set({ solarTimeScale: 0.6, solarFocusId: 'jupiter' })
+    } else {
+      set({ solarTimeScale: 1.2, solarShowOrbits: true, solarFocusId: 'earth' })
+    }
   },
 }))
