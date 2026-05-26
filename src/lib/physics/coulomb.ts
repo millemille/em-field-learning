@@ -97,11 +97,11 @@ export function sampleFieldGrid(
 }
 
 export function chargeInteractionLabel(charges: PointCharge[]): string {
-  if (charges.length < 2) return 'Single charge field'
+  if (charges.length < 2) return 'Single charge field\n單一電荷場'
   const [a, b] = charges
-  if (a.q * b.q > 0) return 'Repel — like charges'
-  if (a.q * b.q < 0) return 'Attract — opposite charges'
-  return 'Neutral'
+  if (a.q * b.q > 0) return 'Repel — like charges\n同號排斥'
+  if (a.q * b.q < 0) return 'Attract — opposite charges\n異號吸引'
+  return 'Neutral\n中性'
 }
 
 export function distanceBetween(a: PointCharge, b: PointCharge): number {

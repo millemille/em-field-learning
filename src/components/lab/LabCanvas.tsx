@@ -43,9 +43,11 @@ export function LabCanvas() {
   return (
     <WebGLErrorBoundary
       fallback={
-        <div className="flex h-full min-h-[420px] items-center justify-center p-6 text-center text-[var(--muted)]">
+        <div className="flex h-full min-h-[280px] items-center justify-center p-6 text-center text-[var(--muted)]">
           WebGL is required for the interactive lab. Try a browser with hardware
           acceleration enabled.
+          <br />
+          互動實驗需要 WebGL，請使用已啟用硬體加速的瀏覽器。
         </div>
       }
     >

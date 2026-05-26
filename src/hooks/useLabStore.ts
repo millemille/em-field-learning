@@ -49,7 +49,7 @@ export const useLabStore = create<LabStore>((set) => ({
   fieldMetrics: {
     fieldMagnitude: 0,
     forceMagnitude: 0,
-    interaction: 'Dipole',
+    interaction: 'Dipole\n偶極',
     chargeDistance: 6,
   },
 

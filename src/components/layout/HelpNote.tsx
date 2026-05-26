@@ -23,7 +23,7 @@ export function HelpNote({ title, children, className, variant = 'default' }: He
       )}
     >
       {title && (
-        <p className="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--silver)]">
+        <p className="mb-1 whitespace-pre-line text-xs font-semibold uppercase tracking-[0.14em] text-[var(--silver)]">
           {title}
         </p>
       )}

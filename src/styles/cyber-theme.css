@@ -52,7 +52,27 @@ body {
   overflow: hidden;
   border: 1px solid var(--border-glow);
   background: #06080c;
-  min-height: 420px;
+  min-height: 280px;
+}
+
+@media (min-width: 1024px) {
+  .lab-workspace {
+    height: clamp(360px, calc(100dvh - 11.5rem), 520px);
+  }
+
+  .lab-controls-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-glow) transparent;
+  }
+
+  .lab-controls-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .lab-controls-scroll::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--border-glow);
+  }
 }
 
 .canvas-frame::before {
