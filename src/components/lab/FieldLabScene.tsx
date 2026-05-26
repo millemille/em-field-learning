@@ -15,8 +15,8 @@ import { useLabStore } from '@/hooks/useLabStore'
 
 const GRID_DIV = 8
 const BOUNDS = { min: -5, max: 5 }
-const ARROW_MAX = 1.4
-const ARROW_SCALE = 2.5e9
+const ARROW_MIN = 0.35
+const ARROW_MAX = 1.35
 
 function FieldArrows({ samples }: { samples: FieldSample[] }) {
   const ref = useRef<THREE.InstancedMesh>(null)
@@ -28,13 +28,16 @@ function FieldArrows({ samples }: { samples: FieldSample[] }) {
     const mesh = ref.current
     if (!mesh) return
 
+    const maxMag = samples.reduce((max, s) => Math.max(max, s.magnitude), 0)
+    if (maxMag < 1e-12) return
+
     samples.forEach((s, i) => {
-      const mag = s.magnitude
-      const len = Math.min((mag / ARROW_SCALE) * 2.5, ARROW_MAX)
+      const t = s.magnitude / maxMag
+      const len = ARROW_MIN + t * (ARROW_MAX - ARROW_MIN)
       dir.set(s.field.x, s.field.y, s.field.z).normalize()
       temp.position.set(s.position.x, s.position.y, s.position.z)
       temp.quaternion.setFromUnitVectors(up, dir)
-      temp.scale.set(0.06, len, 0.06)
+      temp.scale.set(0.09, len, 0.09)
       temp.updateMatrix()
       mesh.setMatrixAt(i, temp.matrix)
     })
@@ -49,9 +52,9 @@ function FieldArrows({ samples }: { samples: FieldSample[] }) {
       <meshStandardMaterial
         color="#4fd1ff"
         emissive="#4fd1ff"
-        emissiveIntensity={0.6}
+        emissiveIntensity={1.1}
         transparent
-        opacity={0.75}
+        opacity={0.9}
       />
     </instancedMesh>
   )
