@@ -1,6 +1,6 @@
 # EM Field Lab
 
-Interactive electromagnetism learning page with a cyber dark-silver theme.
+Interactive electromagnetism learning page with a refined dark editorial theme.
 
 - **Electrostatics lab** — point charges, 3D electric field arrows, field lines, test charge force `F = qE`
 - **Power & circuits lab** — ideal DC circuit `P = IV` with 3D schematic and electron flow

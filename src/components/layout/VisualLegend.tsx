@@ -7,7 +7,7 @@ const items = {
     { color: 'bg-[var(--positive)]', label: 'Positive charge / 正電荷' },
     { color: 'bg-[var(--negative)]', label: 'Negative charge / 負電荷' },
     { color: 'bg-[var(--accent)]', label: 'E-field arrows / 電場箭頭' },
-    { color: 'bg-[#ffe566]', label: 'Test charge & force / 測試電荷與受力' },
+    { color: 'bg-[#e8c87a]', label: 'Test charge & force / 測試電荷與受力' },
   ],
   circuit: [
     { color: 'bg-[var(--accent)]', label: 'Electrons (flow ∝ I) / 電子（流速 ∝ I）' },
@@ -33,8 +33,8 @@ export function VisualLegend() {
       type="button"
       onClick={() => setOpen((v) => !v)}
       className={cn(
-        'absolute bottom-3 left-3 z-10 max-w-[200px] rounded-lg border border-[var(--border)] bg-black/55 text-left backdrop-blur-sm',
-        'cursor-pointer transition-colors hover:border-[var(--accent)] hover:bg-black/65',
+        'absolute bottom-3 left-3 z-10 max-w-[200px] rounded-lg border border-[var(--border)] bg-[var(--surface)] text-left backdrop-blur-sm',
+        'cursor-pointer transition-colors hover:border-[var(--border-accent)]',
         open ? 'px-2.5 py-2' : 'px-2.5 py-1.5',
       )}
       aria-expanded={open}

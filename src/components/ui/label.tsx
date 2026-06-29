@@ -7,7 +7,7 @@ export function Label({
   return (
     <label
       className={cn(
-        'whitespace-pre-line text-xs font-medium uppercase tracking-[0.18em] text-[var(--muted)]',
+        'whitespace-pre-line text-xs font-medium uppercase tracking-[0.12em] text-[var(--muted)]',
         className,
       )}
       {...props}

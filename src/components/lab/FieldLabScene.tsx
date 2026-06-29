@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
-import { Grid, Line, OrbitControls, Stars } from '@react-three/drei'
+import { Grid, Line, OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 import {
   chargeInteractionLabel,
@@ -12,6 +12,7 @@ import {
   type FieldSample,
 } from '@/lib/physics/coulomb'
 import { useLabStore } from '@/hooks/useLabStore'
+import { VIZ } from '@/lib/theme'
 
 const GRID_DIV = 8
 const BOUNDS = { min: -5, max: 5 }
@@ -50,11 +51,11 @@ function FieldArrows({ samples }: { samples: FieldSample[] }) {
     <instancedMesh ref={ref} args={[undefined, undefined, samples.length]} frustumCulled={false}>
       <coneGeometry args={[0.08, 1, 6]} />
       <meshStandardMaterial
-        color="#4fd1ff"
-        emissive="#4fd1ff"
-        emissiveIntensity={1.1}
+        color={VIZ.accent}
+        emissive={VIZ.accentEmissive}
+        emissiveIntensity={0.55}
         transparent
-        opacity={0.9}
+        opacity={0.92}
       />
     </instancedMesh>
   )
@@ -109,7 +110,7 @@ function FieldLines({ seedCount = 10 }: { seedCount?: number }) {
         <Line
           key={i}
           points={pts}
-          color="#b8c0d0"
+          color={VIZ.fieldLine}
           transparent
           opacity={0.35}
           lineWidth={1}
@@ -127,7 +128,7 @@ function ChargeSphere({
   q: number
 }) {
   const positive = q >= 0
-  const color = positive ? '#5dffb0' : '#ff6b8a'
+  const color = positive ? VIZ.positive : VIZ.negative
   const scale = 0.35 + Math.min(Math.abs(q) * 1e5, 0.45)
 
   return (
@@ -205,16 +206,17 @@ export function FieldLabScene() {
   return (
     <>
       <MetricsSync />
-      <ambientLight intensity={0.35} />
-      <pointLight position={[10, 12, 8]} intensity={1.2} color="#4fd1ff" />
-      <pointLight position={[-8, 4, -6]} intensity={0.5} color="#b8c0d0" />
-      <Stars radius={80} depth={40} count={1200} factor={3} fade speed={0.6} />
+      <ambientLight intensity={0.45} />
+      <pointLight position={[10, 12, 8]} intensity={0.9} color={VIZ.warm} />
+      <pointLight position={[-8, 4, -6]} intensity={0.35} color={VIZ.accent} />
       <Grid
         args={[20, 20]}
         cellSize={1}
-        cellThickness={0.4}
+        cellThickness={0.25}
+        cellColor="#2a2826"
         sectionSize={5}
-        sectionThickness={0.8}
+        sectionThickness={0.5}
+        sectionColor="#3a3834"
         fadeDistance={28}
         infiniteGrid
         position={[0, -0.01, 0]}
@@ -227,9 +229,9 @@ export function FieldLabScene() {
       <mesh position={testOrigin} scale={0.28}>
         <sphereGeometry args={[1, 24, 24]} />
         <meshStandardMaterial
-          color="#ffe566"
-          emissive="#ffe566"
-          emissiveIntensity={0.9}
+          color={VIZ.testCharge}
+          emissive={VIZ.testCharge}
+          emissiveIntensity={0.45}
           metalness={0.3}
           roughness={0.3}
         />
