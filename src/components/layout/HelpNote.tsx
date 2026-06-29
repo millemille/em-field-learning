@@ -18,7 +18,7 @@ export function HelpNote({ title, children, className, variant = 'default' }: He
         variant === 'formula' &&
           'border-[var(--border)] bg-black/25 font-mono text-xs text-[var(--silver)]',
         variant === 'default' &&
-          'border-[var(--border)] bg-black/20 text-[var(--muted)]',
+          'border-[var(--border)] bg-[var(--surface)] text-[var(--muted)]',
         className,
       )}
     >

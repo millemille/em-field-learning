@@ -117,8 +117,8 @@ export const PLANETS: PlanetDef[] = [
     orbitalPeriodYears: ORBITAL_PERIOD_YEARS.earth,
     rotationPeriodDays: ROTATION_PERIOD_DAYS.earth,
     visualRadius: proportionalPlanetRadius('earth'),
-    color: '#4fd1ff',
-    emissive: '#2a8fb8',
+    color: '#6a9ec4',
+    emissive: '#4a7a9c',
     emissiveIntensity: 0.45,
   },
   {

@@ -5,6 +5,7 @@ import { FieldLabScene } from '@/components/lab/FieldLabScene'
 import { CircuitLabScene } from '@/components/lab/CircuitLabScene'
 import { SolarSystemScene } from '@/components/lab/SolarSystemScene'
 import { useLabStore } from '@/hooks/useLabStore'
+import { VIZ } from '@/lib/theme'
 
 class WebGLErrorBoundary extends Component<
   { children: ReactNode; fallback: ReactNode },
@@ -32,18 +33,18 @@ function SceneContent() {
 function SceneFog() {
   const activeTab = useLabStore((s) => s.activeTab)
   if (activeTab === 'solar') {
-    return <fog attach="fog" args={['#06080c', 35, 130]} />
+    return <fog attach="fog" args={[VIZ.canvasBg, 35, 130]} />
   }
-  return <fog attach="fog" args={['#06080c', 18, 55]} />
+  return <fog attach="fog" args={[VIZ.canvasBg, 18, 55]} />
 }
 
 function PostFX() {
   return (
     <EffectComposer>
       <Bloom
-        luminanceThreshold={0.15}
-        luminanceSmoothing={0.9}
-        intensity={1.15}
+        luminanceThreshold={0.35}
+        luminanceSmoothing={0.85}
+        intensity={0.45}
         mipmapBlur
       />
     </EffectComposer>
@@ -68,7 +69,7 @@ export function LabCanvas() {
         camera={{ position: [14, 10, 14], fov: 42, near: 0.1, far: 200 }}
         gl={{ antialias: true, alpha: false }}
       >
-        <color attach="background" args={['#06080c']} />
+        <color attach="background" args={[VIZ.canvasBg]} />
         <Suspense fallback={null}>
           <SceneFog />
           <SceneContent />

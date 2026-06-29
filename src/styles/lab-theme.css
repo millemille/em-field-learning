@@ -1,0 +1,108 @@
+:root {
+  --background: #141311;
+  --background-end: #1e1c19;
+  --foreground: #f0ebe3;
+  --muted: #9a948a;
+  --surface: rgba(30, 28, 26, 0.82);
+  --border: rgba(220, 212, 200, 0.14);
+  --border-accent: rgba(168, 149, 120, 0.3);
+  --accent: #b5a48a;
+  --accent-dim: rgba(181, 164, 138, 0.12);
+  --accent-soft: rgba(181, 164, 138, 0.22);
+  --silver: #ddd6cc;
+  --positive: #7cb892;
+  --negative: #d48a9a;
+  --canvas-bg: #121110;
+  --viz-accent: #8fa8c8;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(
+    ellipse 110% 75% at 50% -15%,
+    #252220 0%,
+    var(--background) 50%,
+    #0f0e0c 100%
+  );
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.panel-surface {
+  background: linear-gradient(160deg, var(--surface), rgba(20, 19, 17, 0.65));
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
+    0 16px 48px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+}
+
+.canvas-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--canvas-bg);
+  min-height: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+}
+
+@media (min-width: 1024px) {
+  .lab-workspace {
+    height: clamp(360px, calc(100dvh - 11.5rem), 520px);
+  }
+
+  .lab-workspace--solar {
+    height: clamp(480px, calc(100dvh - 8.5rem), 680px);
+  }
+
+  .lab-controls-scroll--solar {
+    overflow-y: visible;
+  }
+
+  .lab-controls-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-accent) transparent;
+  }
+
+  .lab-controls-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .lab-controls-scroll::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--border-accent);
+  }
+}
+
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}

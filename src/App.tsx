@@ -4,7 +4,6 @@ import { LabTabs } from '@/components/controls/LabTabs'
 function App() {
   return (
     <>
-      <div className="scanline-overlay" aria-hidden />
       <main>
         <HeroIntro />
         <LabTabs />

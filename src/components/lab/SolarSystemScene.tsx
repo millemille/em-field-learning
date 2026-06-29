@@ -4,6 +4,7 @@ import { Grid, Line, OrbitControls, Stars, Text } from '@react-three/drei'
 import * as THREE from 'three'
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { useLabStore } from '@/hooks/useLabStore'
+import { VIZ } from '@/lib/theme'
 import {
   ASTEROID_BELT,
   FOCUS_CAMERA,
@@ -197,7 +198,7 @@ function SolarOrbitControls({
 function OrbitPath({
   radius,
   visible,
-  color = '#4fd1ff',
+  color = VIZ.accent,
 }: {
   radius: number
   visible: boolean
@@ -290,7 +291,7 @@ function CelestialBody({
           fontSize={0.3}
           color="#f0f4fc"
           outlineWidth={0.025}
-          outlineColor="#06080c"
+          outlineColor={VIZ.canvasBg}
           anchorX="center"
           anchorY="bottom"
           textAlign="center"
@@ -431,7 +432,7 @@ function MoonOrbitPath({ visible }: { visible: boolean }) {
   return (
     <Line
       points={points}
-      color="#b8c0d0"
+      color={VIZ.warm}
       opacity={0.5}
       transparent
       lineWidth={1}

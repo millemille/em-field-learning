@@ -6,7 +6,7 @@ export function HeroIntro() {
       <p className="eyebrow mb-2 whitespace-pre-line">
         {'Electromagnetism · Interactive Lab\n電磁學 · 互動實驗室'}
       </p>
-      <h1 className="font-display mb-4 text-3xl font-bold tracking-tight text-[var(--silver)] md:text-4xl">
+      <h1 className="font-display mb-4 text-4xl font-semibold tracking-tight text-[var(--silver)] md:text-5xl">
         EM Field Lab
       </h1>
       <div className="space-y-4 text-[var(--muted)]">
@@ -25,25 +25,25 @@ export function HeroIntro() {
           This page is built for <strong className="text-[var(--foreground)]">beginners and
           intermediate learners</strong>. Each lab links a concept to something you can see: field
           arrows for <span className="font-mono text-[var(--accent)]">E</span>, a force arrow for{' '}
-          <span className="font-mono text-[var(--accent)]">F = qE</span>, and glowing components
+          <span className="font-mono text-[var(--accent)]">F = qE</span>, and warm highlights
           for power <span className="font-mono text-[var(--accent)]">P = IV</span> in a DC circuit.
           <br />
           這個頁面是為了<strong className="text-[var(--foreground)]">初學與進階學習者</strong>
           設計。每個實驗都把概念連到可視化現象：
           <span className="font-mono text-[var(--accent)]">E</span> 用場箭頭表示、
           <span className="font-mono text-[var(--accent)]">F = qE</span> 用受力箭頭表示，以及直流電路中
-          <span className="font-mono text-[var(--accent)]">P = IV</span> 的元件發光效果。
+          <span className="font-mono text-[var(--accent)]">P = IV</span> 的元件發熱效果。
         </p>
       </div>
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         <HelpNote title={'Electric field (E)\n電場 (E)'}>
           Think of <strong className="text-[var(--foreground)]">E</strong> as the push per unit
-          charge at each point in space. Stronger field → longer cyan arrows in the lab. Units:
+          charge at each point in space. Stronger field → longer blue arrows in the lab. Units:
           newtons per coulomb (N/C), same as volts per meter (V/m). <br />
           把
           <strong className="text-[var(--foreground)]">E</strong>
-          想成空間中每一點「每單位電荷受到的推力」。場越強，實驗中的青色箭頭越長。單位是牛頓每庫侖
+          想成空間中每一點「每單位電荷受到的推力」。場越強，實驗中的藍色箭頭越長。單位是牛頓每庫侖
           (N/C)，也等同伏特每公尺 (V/m)。
         </HelpNote>
         <HelpNote title={'Force on a charge (F)\n電荷受力 (F)'}>
@@ -69,10 +69,10 @@ export function HeroIntro() {
         <HelpNote title={'Power (P)\n功率 (P)'}>
           <strong className="text-[var(--foreground)]">Power</strong> is energy per second (watts).
           In the circuit lab, <span className="font-mono text-[var(--accent)]">P = V × I</span>.
-          That energy often becomes heat in the resistor — watch the glow increase with P. <br />
+          That energy often becomes heat in the resistor — watch the warmth increase with P. <br />
           <strong className="text-[var(--foreground)]">功率</strong> 是每秒能量（瓦特）。在電路實驗裡，
           <span className="font-mono text-[var(--accent)]">P = V × I</span>。這些能量常會變成電阻的熱，
-          可看到發光強度隨 P 增加。
+          可看到發熱強度隨 P 增加。
         </HelpNote>
         <HelpNote title={'Orbits & gravity\n軌道與重力'} className="sm:col-span-2">
           In the Solar System lab, each planet&apos;s year length follows{' '}

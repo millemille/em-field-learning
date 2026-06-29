@@ -1,8 +1,9 @@
 import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Grid, Line, OrbitControls, Stars, Text } from '@react-three/drei'
+import { Grid, Line, OrbitControls, Text } from '@react-three/drei'
 import * as THREE from 'three'
 import { useLabStore } from '@/hooks/useLabStore'
+import { VIZ } from '@/lib/theme'
 import { solveDcCircuit } from '@/lib/physics/dcPower'
 
 const WIRE_POINTS: [number, number, number][] = [
@@ -45,9 +46,9 @@ function ElectronFlow({ speed }: { speed: number }) {
     <instancedMesh ref={ref} args={[undefined, undefined, count]}>
       <sphereGeometry args={[1, 8, 8]} />
       <meshStandardMaterial
-        color="#4fd1ff"
-        emissive="#4fd1ff"
-        emissiveIntensity={1.5}
+        color={VIZ.accent}
+        emissive={VIZ.accentEmissive}
+        emissiveIntensity={0.65}
       />
     </instancedMesh>
   )
@@ -62,15 +63,15 @@ function BatteryMesh() {
           color="#2a3344"
           metalness={0.6}
           roughness={0.35}
-          emissive="#4fd1ff"
-          emissiveIntensity={0.15}
+          emissive={VIZ.accentEmissive}
+          emissiveIntensity={0.08}
         />
       </mesh>
       <mesh position={[0, 1.05, 0]}>
         <boxGeometry args={[0.25, 0.2, 0.25]} />
-        <meshStandardMaterial color="#b8c0d0" metalness={0.8} roughness={0.2} />
+        <meshStandardMaterial color={VIZ.warm} metalness={0.8} roughness={0.2} />
       </mesh>
-      <Text position={[0, -1.35, 0]} fontSize={0.28} color="#8b95a8" anchorX="center">
+      <Text position={[0, -1.35, 0]} fontSize={0.28} color={VIZ.muted} anchorX="center">
         V+
       </Text>
     </group>
@@ -91,7 +92,7 @@ function ResistorMesh({ heat }: { heat: number }) {
           roughness={0.5}
         />
       </mesh>
-      <Text position={[0, 0.75, 0]} fontSize={0.3} color="#b8c0d0" anchorX="center">
+      <Text position={[0, 0.75, 0]} fontSize={0.3} color={VIZ.warm} anchorX="center">
         R
       </Text>
     </group>
@@ -107,16 +108,18 @@ export function CircuitLabScene() {
 
   return (
     <>
-      <ambientLight intensity={0.4} />
-      <pointLight position={[6, 8, 6]} intensity={1.1} color="#4fd1ff" />
-      <pointLight position={[-6, 2, -4]} intensity={0.45} color="#b8c0d0" />
-      <Stars radius={60} depth={30} count={800} factor={2} fade speed={0.4} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[6, 8, 6]} intensity={0.75} color={VIZ.warm} />
+      <pointLight position={[-6, 2, -4]} intensity={0.35} color={VIZ.accent} />
 
       <Grid
         args={[16, 16]}
         cellSize={1}
-        cellThickness={0.35}
+        cellThickness={0.2}
+        cellColor="#2a2826"
         sectionSize={4}
+        sectionThickness={0.4}
+        sectionColor="#3a3834"
         fadeDistance={22}
         infiniteGrid
         position={[0, -1.5, 0]}
@@ -124,7 +127,7 @@ export function CircuitLabScene() {
 
       <Line
         points={WIRE_POINTS}
-        color="#4fd1ff"
+        color={VIZ.accent}
         lineWidth={2}
         transparent
         opacity={0.85}
@@ -134,7 +137,7 @@ export function CircuitLabScene() {
       <ResistorMesh heat={heat} />
       <ElectronFlow speed={flowSpeed} />
 
-      <Text position={[0, -2.2, 0]} fontSize={0.35} color="#4fd1ff" anchorX="center">
+      <Text position={[0, -2.2, 0]} fontSize={0.35} color={VIZ.warm} anchorX="center">
         {`I = ${current.toFixed(2)} A   P = ${power.toFixed(1)} W`}
       </Text>
 
